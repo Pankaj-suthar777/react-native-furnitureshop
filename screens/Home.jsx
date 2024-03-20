@@ -1,7 +1,14 @@
 import React from "react";
-import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Ionicons, Fontisto } from "@expo/vector-icons";
 import styles from "./home.style";
+import { Welcome } from "../components";
 
 const Home = () => {
   return (
@@ -22,6 +29,9 @@ const Home = () => {
           </View>
         </View>
       </View>
+      <ScrollView>
+        <Welcome />
+      </ScrollView>
     </SafeAreaView>
   );
 };
