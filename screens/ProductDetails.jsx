@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import styles from "./productDetails.style";
-import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
-import { COLORS } from "../constants";
+import {
+  Ionicons,
+  SimpleLineIcons,
+  MaterialCommunityIcons,
+  Fontisto,
+} from "@expo/vector-icons";
+import { COLORS, SIZES } from "../constants";
 
 const ProductDetails = ({ navigation }) => {
   const [count, setCount] = useState(1);
@@ -18,7 +23,7 @@ const ProductDetails = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.upperRow}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="chevron-back-circle" size={30} />
@@ -78,8 +83,31 @@ const ProductDetails = ({ navigation }) => {
             a nunc a leo varius luctus.
           </Text>
         </View>
+        <View style={{ marginBottom: SIZES.small }}>
+          <View style={styles.location}>
+            <View style={{ flexDirection: "row" }}>
+              <Ionicons name="location-outline" size={20} />
+              <Text> Dallas</Text>
+            </View>
+
+            <View style={{ flexDirection: "row" }}>
+              <MaterialCommunityIcons name="truck-delivery-outline" size={20} />
+              <Text> Free Delivery</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.cartRow}>
+          <TouchableOpacity onPress={() => {}} style={styles.cartBtn}>
+            <Text style={styles.cartTitle}>BUY NOW</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => {}} style={styles.addCart}>
+            <Fontisto name="shopping-bag" size={22} color={COLORS.lightWhite} />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
