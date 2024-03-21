@@ -8,8 +8,11 @@ import {
   Fontisto,
 } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../constants";
+import { useRoute } from "@react-navigation/native";
 
 const ProductDetails = ({ navigation }) => {
+  const route = useRoute();
+  const { item } = route.params;
   const [count, setCount] = useState(1);
 
   const increment = () => {
@@ -34,15 +37,15 @@ const ProductDetails = ({ navigation }) => {
       </View>
       <Image
         source={{
-          uri: "https://media.istockphoto.com/id/1357529193/photo/3d-rendering-of-a-cozy-living-room.jpg?s=2048x2048&w=is&k=20&c=3DNM6MEVHjVYylIG3nigNKX1NMiBdZRN3PxfThhwIXc=",
+          uri: item.imageUrl,
         }}
         style={styles.image}
       />
       <View style={styles.details}>
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Product</Text>
+          <Text style={styles.title}>{item.title}</Text>
           <View style={styles.priceWrapper}>
-            <Text style={styles.price}>$600</Text>
+            <Text style={styles.price}>${item.price}</Text>
           </View>
         </View>
         <View style={styles.ratingRow}>
@@ -66,28 +69,13 @@ const ProductDetails = ({ navigation }) => {
         </View>
         <View style={styles.descriptionWrapper}>
           <Text style={styles.description}>Description</Text>
-          <Text style={styles.descriptionText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut
-            urna vitae urna consequat consequat. Donec hendrerit libero vel sem
-            vehicula, vel ullamcorper tortor finibus. Proin vitae neque ac arcu
-            ultricies fringilla. Sed non metus tincidunt, maximus odio id,
-            malesuada eros. Vivamus id velit eget nisi congue convallis.
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Maecenas non neque magna. Suspendisse sed
-            nibh ultricies, molestie felis non, feugiat quam. Integer eu dui a
-            libero tempus auctor. Sed hendrerit, purus a eleifend consectetur,
-            arcu nisl dictum lectus, at fringilla nulla justo sit amet enim.
-            Maecenas euismod congue sodales. Phasellus tempor sapien at felis
-            euismod, quis commodo sem facilisis. Sed dapibus eros vitae erat
-            consequat efficitur. Suspendisse potenti. Sed nec posuere nisi. Cras
-            a nunc a leo varius luctus.
-          </Text>
+          <Text style={styles.descriptionText}>{item.description}</Text>
         </View>
         <View style={{ marginBottom: SIZES.small }}>
           <View style={styles.location}>
             <View style={{ flexDirection: "row" }}>
               <Ionicons name="location-outline" size={20} />
-              <Text> Dallas</Text>
+              <Text> {item.product_location}</Text>
             </View>
 
             <View style={{ flexDirection: "row" }}>
