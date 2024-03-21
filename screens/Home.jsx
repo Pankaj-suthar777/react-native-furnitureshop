@@ -10,10 +10,12 @@ import { Ionicons, Fontisto } from "@expo/vector-icons";
 import styles from "./home.style";
 import { Welcome } from "../components";
 import Carousel from "../components/home/Carousel";
+import Heading from "../components/home/Heading";
+import ProductRow from "../components/products/ProductRow";
 
 const Home = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Ionicons name="location-outline" size={24} />
@@ -33,8 +35,11 @@ const Home = () => {
       <ScrollView>
         <Welcome />
         <Carousel />
+        <Heading />
+        <ProductRow />
+        <Carousel />
       </ScrollView>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

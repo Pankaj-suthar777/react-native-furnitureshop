@@ -6,14 +6,6 @@ const styles = StyleSheet.create({
     marginTop: SIZES.medium,
     marginHorizontal: 12,
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  headerTitle: {
-    fontFamily: "semibold",
-    fontSize: SIZES.xLarge - 2,
-  },
 });
 
 export default styles;
