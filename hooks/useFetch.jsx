@@ -11,9 +11,10 @@ const useFetch = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/api/products");
+      const response = await axios.get(
+        "http://192.168.71.227:3000/api/products"
+      );
       setData(response.data);
-      console.log(response);
     } catch (error) {
       setError(error);
     } finally {
