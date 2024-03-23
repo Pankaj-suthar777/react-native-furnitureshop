@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.lightWhite,
-    paddingTop: 30,
   },
   wrapper: {
     flex: 1,

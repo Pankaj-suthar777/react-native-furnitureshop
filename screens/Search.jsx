@@ -55,7 +55,7 @@ const Search = () => {
         </View>
       </View>
       {searchResults.length === 0 ? (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginTop: 50 }}>
           <Image
             source={require("../assets/images/Pose23.png")}
             style={styles.serachImage}

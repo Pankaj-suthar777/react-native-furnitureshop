@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "bold",
     fontSize: SIZES.large,
+    maxWidth: 270,
   },
   price: {
     paddingHorizontal: 10,

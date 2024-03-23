@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: SIZES.medium,
     marginHorizontal: 12,
+    marginBottom: 120,
   },
 });
 
