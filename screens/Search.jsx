@@ -20,7 +20,7 @@ const Search = () => {
   const handleSearch = async () => {
     try {
       const res = await axios.get(
-        `http://192.168.252.227:3000/api/products/search/${searchKey}`
+        `http://192.168.211.227:3000/api/products/search/${searchKey}`
       );
       SetSearchResults(res.data);
     } catch (error) {

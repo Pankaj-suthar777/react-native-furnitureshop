@@ -1,11 +1,12 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useContext } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../constants";
 
-const ProfileDetails = ({ icon, title, value }) => {
+const ProfileDetails = ({ icon, title, value, onPress }) => {
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={{
         flexDirection: "row",
         alignItems: "center",
@@ -40,7 +41,7 @@ const ProfileDetails = ({ icon, title, value }) => {
           <Ionicons name="chevron-forward" size={30} color={COLORS.black} />
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

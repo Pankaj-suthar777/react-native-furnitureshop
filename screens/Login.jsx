@@ -1,37 +1,40 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   TextInput,
   View,
   StyleSheet,
   TouchableOpacity,
   Text,
+  ActivityIndicator,
+  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { COLORS } from "../constants";
-import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, isLoading } = useContext(AuthContext);
 
   const navigation = useNavigation();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "http://192.168.179.227:3000/api/users/login",
-        {
-          password,
-          email,
-        }
-      );
-      console.log(response);
+      login(email, password);
     } catch (error) {
+      Alert.alert("Error", "An error occurred while logging in.");
       console.log(error);
     }
   };
 
+  if (isLoading) {
+    return (
+      <View>
+        <ActivityIndicator size="small" />
+      </View>
+    );
+  }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.formContainer}>
@@ -61,16 +64,17 @@ const Login = () => {
             justifyContent: "center",
             alignItems: "center",
             marginTop: 50,
+            flexDirection: "row",
           }}
         >
           <Text style={{ fontFamily: "regular" }}>
             Don't have an account? &nbsp;
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={{ fontFamily: "bold", color: "#007bff" }}>
-                Register
-              </Text>
-            </TouchableOpacity>
           </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+            <Text style={{ fontFamily: "bold", color: "#007bff" }}>
+              Register
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

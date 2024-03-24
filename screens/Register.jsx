@@ -1,14 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   TextInput,
   View,
   StyleSheet,
   TouchableOpacity,
   Text,
+  ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -17,21 +18,24 @@ const Register = () => {
 
   const navigation = useNavigation();
 
+  const { register, isLoading } = useContext(AuthContext);
   const handleRegister = async () => {
     try {
-      const response = await axios.post(
-        "http://192.168.179.227:3000/api/users/register",
-        {
-          name,
-          password,
-          email,
-        }
-      );
-      console.log(response);
+      register(name, email, password);
+
+      navigation.navigate("Home");
     } catch (error) {
       console.log(error);
     }
   };
+
+  if (isLoading) {
+    return (
+      <View>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -69,16 +73,15 @@ const Register = () => {
             justifyContent: "center",
             alignItems: "center",
             marginTop: 50,
+            flexDirection: "row",
           }}
         >
           <Text style={{ fontFamily: "regular" }}>
             Already have an account? &nbsp;
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-              <Text style={{ fontFamily: "bold", color: "#007bff" }}>
-                Login
-              </Text>
-            </TouchableOpacity>
           </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Text style={{ fontFamily: "bold", color: "#007bff" }}>Login</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

@@ -1,13 +1,9 @@
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import BottomTabNavigation from "./navigation/BottomTabNavigation";
-import { Cart, NewRivals, ProductDetails } from "./screens";
-import Register from "./screens/Register";
-import Login from "./screens/Login";
 
-const Stack = createNativeStackNavigator();
+import { AuthProvider } from "./context/AuthContext";
+import ChangeScreen from "./screens/ChangeScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,40 +26,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Bottom Navigation"
-          component={BottomTabNavigation}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Cart"
-          component={Cart}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="ProductDetails"
-          component={ProductDetails}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ProductList"
-          component={NewRivals}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <ChangeScreen />
+      </NavigationContainer>
+    </AuthProvider>
   );
 }

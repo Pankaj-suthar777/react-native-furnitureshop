@@ -1,14 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useContext } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, Fontisto } from "@expo/vector-icons";
 import styles from "./profile.style";
 import { COLORS } from "../constants";
 import ProfileDetails from "../components/profile/ProfileDetails";
+import { AuthContext } from "../context/AuthContext";
 
 const Profile = () => {
   const navigation = useNavigation();
+  const { userInfo, logout } = useContext(AuthContext);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.upperRow}>
@@ -20,12 +22,12 @@ const Profile = () => {
       <View>
         <View style={styles.profileRow}>
           <Image
-            source={require("../assets/user.jpg")}
+            source={{ uri: userInfo.profilePicture }}
             style={styles.userimage}
           />
           <View>
-            <Text style={styles.username}>Pankaj Suthar</Text>
-            <Text style={styles.email}>pankaj@gmail.com</Text>
+            <Text style={styles.username}>{userInfo.name}</Text>
+            <Text style={styles.email}>{userInfo.email}</Text>
           </View>
         </View>
 
@@ -38,12 +40,12 @@ const Profile = () => {
             />
           }
           title="Phone Number"
-          value="987654321"
+          value={userInfo.phone || "not registered"}
         />
         <ProfileDetails
           icon={<Fontisto name="email" size={30} color={COLORS.black} />}
           title="Email"
-          value="pankaj@gmail.com"
+          value={userInfo.email}
         />
         <ProfileDetails
           icon={
@@ -57,6 +59,11 @@ const Profile = () => {
           value="*******"
         />
         <ProfileDetails
+          onPress={() => {
+            if ((title = "Logout")) {
+              logout();
+            }
+          }}
           icon={
             <Ionicons name="log-out-outline" size={30} color={COLORS.black} />
           }
