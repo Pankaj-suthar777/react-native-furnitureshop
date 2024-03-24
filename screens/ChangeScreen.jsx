@@ -6,7 +6,6 @@ import AuthStack from "./AuthStack";
 
 const ChangeScreen = () => {
   const { userToken, isLoading } = useContext(AuthContext);
-  console.log(userToken);
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

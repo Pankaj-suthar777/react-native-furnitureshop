@@ -32,6 +32,19 @@ const Profile = () => {
         </View>
 
         <ProfileDetails
+          onPress={() => {
+            navigation.navigate("Cart");
+          }}
+          icon={<Ionicons name="cart-outline" size={30} color={COLORS.black} />}
+          title="Cart"
+        />
+
+        <ProfileDetails
+          icon={<Ionicons name="list-outline" size={30} color={COLORS.black} />}
+          title="Order"
+        />
+
+        <ProfileDetails
           icon={
             <Ionicons
               name="phone-portrait-outline"

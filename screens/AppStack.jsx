@@ -4,6 +4,7 @@ import BottomTabNavigation from "../navigation/BottomTabNavigation";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
 import NewRivals from "./NewRivals";
+import CheckoutPrice from "./CheckoutPrice";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,11 @@ const AppStack = () => {
       <Stack.Screen
         name="ProductList"
         component={NewRivals}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CheckoutDetails"
+        component={CheckoutPrice}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { AuthProvider } from "./context/AuthContext";
 import ChangeScreen from "./screens/ChangeScreen";
+import { CartProvider } from "./context/CartContext";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,9 +28,11 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <ChangeScreen />
-      </NavigationContainer>
+      <CartProvider>
+        <NavigationContainer>
+          <ChangeScreen />
+        </NavigationContainer>
+      </CartProvider>
     </AuthProvider>
   );
 }

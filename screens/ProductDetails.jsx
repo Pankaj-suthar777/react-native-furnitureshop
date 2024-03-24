@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import styles from "./productDetails.style";
 import {
@@ -9,6 +9,7 @@ import {
 } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../constants";
 import { useRoute } from "@react-navigation/native";
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = ({ navigation }) => {
   const route = useRoute();
@@ -18,6 +19,16 @@ const ProductDetails = ({ navigation }) => {
   const increment = () => {
     setCount(count + 1);
   };
+
+  const {
+    cart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeItemFromCart,
+    clearCart,
+    cartTotal,
+    addItemToCart,
+  } = useCart();
 
   const decrement = () => {
     if (count > 1) {
@@ -90,7 +101,12 @@ const ProductDetails = ({ navigation }) => {
             <Text style={styles.cartTitle}>BUY NOW</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => {}} style={styles.addCart}>
+          <TouchableOpacity
+            onPress={() => {
+              addItemToCart(item);
+            }}
+            style={styles.addCart}
+          >
             <Fontisto name="shopping-bag" size={22} color={COLORS.lightWhite} />
           </TouchableOpacity>
         </View>
