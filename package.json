@@ -16,7 +16,7 @@
     "@react-navigation/native-stack": "^6.9.13",
     "@stripe/react-stripe-js": "^2.6.2",
     "@stripe/stripe-js": "^3.0.10",
-    "@stripe/stripe-react-native": "^0.23.3",
+    "@stripe/stripe-react-native": "~0.35.1",
     "axios": "^1.4.0",
     "expo": "^50.0.14",
     "expo-font": "^11.1.1",

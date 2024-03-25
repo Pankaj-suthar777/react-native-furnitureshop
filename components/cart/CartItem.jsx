@@ -29,6 +29,7 @@ const CartItem = ({ item }) => {
           }}
         >
           <Text style={styles.supplier}>${item.price}</Text>
+
           <View style={styles.rating}>
             <TouchableOpacity
               onPress={() => {

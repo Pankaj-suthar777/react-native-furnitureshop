@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
 import styles from "./cart.style";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -92,11 +93,18 @@ function Cart() {
           <Ionicons name="chevron-back" size={30} color={COLORS.black} />
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 1, marginTop: 40 }}>
+      <ScrollView
+        style={{
+          height: 480,
+          position: "absolute",
+          top: 100,
+          width: "100%",
+        }}
+      >
         {cart.map((item) => (
           <CartItem key={item._id} item={item} />
         ))}
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
