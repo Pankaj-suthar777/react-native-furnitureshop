@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AuthProvider } from "./context/AuthContext";
 import ChangeScreen from "./screens/ChangeScreen";
 import { CartProvider } from "./context/CartContext";
+import { StripeProvider } from "@stripe/stripe-react-native";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,7 +31,9 @@ export default function App() {
     <AuthProvider>
       <CartProvider>
         <NavigationContainer>
-          <ChangeScreen />
+          <StripeProvider publishableKey="pk_test_51OhvW7Gr7paNn0fxbC8fWbjyifJHhT5vKdT8IR2oz8X8bAbz0oiJaqHMg8B9bUjNaEwBffNgspnjAR0QlISGQPel00EN3uyBLK">
+            <ChangeScreen />
+          </StripeProvider>
         </NavigationContainer>
       </CartProvider>
     </AuthProvider>

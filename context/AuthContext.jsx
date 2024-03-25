@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.249.227:3000/api/users/login",
+        "http://192.168.246.227:3000/api/users/login",
         {
           password,
           email,

@@ -34,6 +34,7 @@ const Login = () => {
       </View>
     );
   }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.formContainer}>
