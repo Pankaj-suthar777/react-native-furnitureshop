@@ -23,7 +23,6 @@ const Login = () => {
     try {
       login(email, password);
     } catch (error) {
-      Alert.alert("Error", "An error occurred while logging in.");
       console.log(error);
     }
   };

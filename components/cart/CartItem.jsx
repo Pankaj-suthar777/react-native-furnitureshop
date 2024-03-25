@@ -1,7 +1,10 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./CartItem.style";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { useCart } from "../../context/CartContext";
 const CartItem = ({ item }) => {
+  const { increaseQuantity, decreaseQuantity } = useCart();
   return (
     <View style={styles.conatiner}>
       <TouchableOpacity
@@ -27,13 +30,23 @@ const CartItem = ({ item }) => {
         >
           <Text style={styles.supplier}>${item.price}</Text>
           <View style={styles.rating}>
-            <TouchableOpacity onPress={() => increment()}>
+            <TouchableOpacity
+              onPress={() => {
+                increaseQuantity(item._id);
+              }}
+            >
               <SimpleLineIcons name="plus" size={20} />
             </TouchableOpacity>
             <Text style={[styles.ratingText, { marginHorizontal: 8 }]}>
-              {count}
+              {item.quantity}
             </Text>
-            <TouchableOpacity onPress={() => decrement()}>
+            <TouchableOpacity
+              onPress={() => {
+                if (item.quantity > 1) {
+                  decreaseQuantity(item._id);
+                }
+              }}
+            >
               <SimpleLineIcons name="minus" size={20} />
             </TouchableOpacity>
           </View>

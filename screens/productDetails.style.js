@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     width: SIZES.width,
     borderTopLeftRadius: SIZES.medium,
     borderTopRightRadius: SIZES.medium,
+    marginBottom: 40,
   },
   titleRow: {
     marginHorizontal: 20,
@@ -94,21 +95,22 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: SIZES.large,
   },
-
   cartRow: {
     paddingBottom: SIZES.small,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
-    width: SIZES.width,
+    width: "100%",
     top: 20,
+    paddingHorizontal: 10,
   },
   cartBtn: {
-    width: SIZES.width * 0.7,
+    flex: 1,
     backgroundColor: COLORS.black,
     padding: SIZES.small / 2,
     borderRadius: SIZES.large,
-    marginLeft: 12,
+    marginLeft: 6,
+    marginRight: 6,
   },
   cartTitle: {
     marginLeft: SIZES.small,
@@ -116,12 +118,11 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium,
     color: COLORS.lightWhite,
   },
-
   addCart: {
-    width: 37,
+    paddingHorizontal: 30,
+    flexDirection: "row",
     height: 37,
     borderRadius: 50,
-    margin: SIZES.small,
     backgroundColor: COLORS.black,
     alignItems: "center",
     justifyContent: "center",

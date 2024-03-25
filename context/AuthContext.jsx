@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { Alert } from "react-native";
 
 export const AuthContext = createContext();
 
@@ -13,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.211.227:3000/api/users/login",
+        "http://192.168.249.227:3000/api/users/login",
         {
           password,
           email,
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
       setUserInfo(response.data.user);
       setUserToken(response.data.token);
     } catch (error) {
+      Alert.alert("No User Found", error.message, [{ text: "OK" }]);
       console.log(error);
     } finally {
       setIsLoading(false);
@@ -34,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.211.227:3000/api/users/register",
+        "http://192.168.249.227:3000/api/users/register",
         {
           password,
           email,

@@ -7,30 +7,30 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addItemToCart = (item) => {
+  const addItemToCart = (item, times) => {
     const existingItem = cart.find((cartItem) => cartItem._id === item._id);
 
     if (existingItem) {
       setCart(
         cart.map((cartItem) =>
           cartItem._id === item._id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity + times }
             : cartItem
         )
       );
     } else {
-      setCart([...cart, { ...item, quantity: 1 }]);
+      setCart([...cart, { ...item }]);
     }
   };
 
   const removeItemFromCart = (itemId) => {
-    setCart(cart.filter((item) => item.id !== itemId));
+    setCart(cart.filter((item) => item._id !== itemId));
   };
 
-  const increaseQuantity = (itemId) => {
+  const increaseQuantity = (itemId, times) => {
     setCart(
       cart.map((item) =>
-        item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
     setCart(
       cart
         .map((item) =>
-          item.id === itemId ? { ...item, quantity: item.quantity - 1 } : item
+          item._id === itemId ? { ...item, quantity: item.quantity - 1 } : item
         )
         .filter((item) => item.quantity > 0)
     );

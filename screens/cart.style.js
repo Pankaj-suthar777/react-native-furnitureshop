@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     color: COLORS.lightWhite,
     backgroundColor: "black",
     marginHorizontal: 18,
-    marginTop: 40,
+    marginTop: 15,
   },
   conatiner: {
     justifyContent: "space-between",

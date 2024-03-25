@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   conatiner: {
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: SIZES.small,
+    marginBottom: 5,
     flexDirection: "row",
     padding: SIZES.medium,
     borderRadius: SIZES.small,

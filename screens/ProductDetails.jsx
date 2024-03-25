@@ -16,25 +16,9 @@ const ProductDetails = ({ navigation }) => {
   const { item } = route.params;
   const [count, setCount] = useState(1);
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+  const { cart, increaseQuantity, decreaseQuantity, addItemToCart } = useCart();
 
-  const {
-    cart,
-    increaseQuantity,
-    decreaseQuantity,
-    removeItemFromCart,
-    clearCart,
-    cartTotal,
-    addItemToCart,
-  } = useCart();
-
-  const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
+  const cartItem = cart.find((i) => item._id === i._id);
 
   return (
     <ScrollView style={styles.container}>
@@ -67,13 +51,23 @@ const ProductDetails = ({ navigation }) => {
             <Text style={styles.ratingText}>(4.9)</Text>
           </View>
           <View style={styles.rating}>
-            <TouchableOpacity onPress={() => increment()}>
+            <TouchableOpacity
+              onPress={() => {
+                setCount(count + 1);
+              }}
+            >
               <SimpleLineIcons name="plus" size={20} />
             </TouchableOpacity>
             <Text style={[styles.ratingText, { marginHorizontal: 8 }]}>
               {count}
             </Text>
-            <TouchableOpacity onPress={() => decrement()}>
+            <TouchableOpacity
+              onPress={() => {
+                if (count > 1) {
+                  setCount(count - 1);
+                }
+              }}
+            >
               <SimpleLineIcons name="minus" size={20} />
             </TouchableOpacity>
           </View>
@@ -97,17 +91,29 @@ const ProductDetails = ({ navigation }) => {
         </View>
 
         <View style={styles.cartRow}>
-          <TouchableOpacity onPress={() => {}} style={styles.cartBtn}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={[styles.cartBtn, { marginRight: 6 }]}
+          >
             <Text style={styles.cartTitle}>BUY NOW</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {
-              addItemToCart(item);
+              if (cartItem) {
+                addItemToCart(item, count);
+              } else {
+                item.quantity = count;
+                addItemToCart(item);
+              }
+              navigation.navigate("Cart");
             }}
-            style={styles.addCart}
+            style={[styles.addCart, { marginLeft: 6 }]}
           >
             <Fontisto name="shopping-bag" size={22} color={COLORS.lightWhite} />
+            <Text style={{ color: "#fff", marginLeft: 12, fontFamily: "bold" }}>
+              ADD TO CART
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

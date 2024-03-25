@@ -8,8 +8,10 @@ import Heading from "../components/home/Heading";
 import ProductRow from "../components/products/ProductRow";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { useCart } from "../context/CartContext";
 
 const Home = () => {
+  const { cart } = useCart();
   const navigation = useNavigation();
   return (
     <SafeAreaView>
@@ -21,7 +23,7 @@ const Home = () => {
 
           <View style={{ alignItems: "flex-end" }}>
             <View style={styles.cartCount}>
-              <Text style={styles.cartNumber}> 8 </Text>
+              <Text style={styles.cartNumber}> {cart.length} </Text>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
               <Fontisto name="shopping-bag" size={24} />

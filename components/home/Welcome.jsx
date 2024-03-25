@@ -13,7 +13,7 @@ const Welcome = () => {
         <Text style={styles.welcomeText(COLORS.black, SIZES.xSmall)}>
           FInd The Most
         </Text>
-        <Text style={styles.welcomeText(COLORS.primary, 0)}>
+        <Text style={[styles.welcomeText(COLORS.primary, 0), { fontSize: 36 }]}>
           Luxurious Furniture
         </Text>
       </View>
