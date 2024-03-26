@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Text,
   ActivityIndicator,
-  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthContext } from "../context/AuthContext";
@@ -55,7 +54,12 @@ const Login = () => {
           secureTextEntry
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleLogin}
+          activeOpacity={0.8}
+        >
+          {isLoading && <ActivityIndicator size="small" color="black" />}
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 

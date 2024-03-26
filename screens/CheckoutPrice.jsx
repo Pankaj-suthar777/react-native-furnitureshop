@@ -17,12 +17,9 @@ import { COLORS, SIZES } from "../constants";
 import OrderItem from "../components/cart/OrderItem";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import ModalPopup from "../components/Modal";
 
 const CheckoutPrice = () => {
-  const [modalVisible, setModalVisible] = useState(true);
   const navigation = useNavigation();
-  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { cart, cartTotal } = useCart();
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
@@ -46,13 +43,11 @@ const CheckoutPrice = () => {
     // const response = await fetchFromAPI("create-checkout-session", {
     //   body: { line_items, customer_email: "customer@example.com" },
     // });
-    if (!email) {
-      return Alert.alert("Email is required", "Please add email");
-    }
+
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://192.168.246.227:3000/create-checkout-session",
+        "http://192.168.121.227:3000/create-checkout-session",
         {
           amount: 660,
         }
@@ -74,20 +69,8 @@ const CheckoutPrice = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ModalPopup
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-      />
       <View
         style={{
           marginHorizontal: 20,
@@ -135,29 +118,30 @@ const CheckoutPrice = () => {
             marginTop: 20,
           }}
         >
-          <View style={{ marginBottom: 12 }}>
-            <TextInput
-              style={{
-                backgroundColor: "white",
-                paddingHorizontal: 18,
-                fontSize: 18,
-                paddingVertical: 8,
-              }}
-              onChangeText={(text) => setEmail(text)}
-              value={email}
-              placeholder="Email"
-              keyboardType="email-address"
-            />
-          </View>
-          <View>
-            <Button
-              onPress={() => {
+          <TouchableOpacity
+            style={{
+              backgroundColor: "black",
+              paddingVertical: 10,
+              paddingHorizontal: 20,
+              borderRadius: 5,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              opacity: isLoading ? 0.5 : 1,
+            }}
+            onPress={() => {
+              if (!isLoading) {
                 handleCheckout();
-              }}
-              title="CHECKOUT"
-              color="black"
-            />
-          </View>
+              }
+            }}
+            activeOpacity={0.8}
+            disabled={isLoading}
+          >
+            {isLoading && <ActivityIndicator size="small" color="white" />}
+            <Text style={{ color: "white", fontSize: 16, marginLeft: 10 }}>
+              CHECKOUT
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
