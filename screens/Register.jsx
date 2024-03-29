@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   Text,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthContext } from "../context/AuthContext";
+import { Ionicons, Fontisto } from "@expo/vector-icons";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -40,31 +42,92 @@ const Register = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Register</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          onChangeText={(text) => setName(text)}
-          value={name}
-          keyboardType="default"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          secureTextEntry
-        />
-
+        <View style={{ height: "35%", width: "100%", marginBottom: 20 }}>
+          <Image
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+            source={{
+              uri: "https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=740",
+            }}
+          />
+        </View>
+        <Text style={styles.title}>Sign up and start shopping</Text>
+        <View
+          style={{
+            height: 50,
+            borderRadius: 14,
+            paddingHorizontal: 20,
+            alignItems: "center",
+            flexDirection: "row",
+            backgroundColor: "#d3ecf0",
+            flexDirection: "row",
+            marginBottom: 30,
+          }}
+        >
+          <Ionicons
+            name="at-circle-outline"
+            color="#808080"
+            size={18}
+            style={{ marginRight: 10 }}
+          />
+          <TextInput
+            placeholder="Username"
+            onChangeText={(text) => setName(text)}
+            value={name}
+            keyboardType="default"
+            autoCapitalize="none"
+          />
+        </View>
+        <View
+          style={{
+            height: 50,
+            borderRadius: 14,
+            paddingHorizontal: 20,
+            alignItems: "center",
+            flexDirection: "row",
+            backgroundColor: "#d3ecf0",
+            flexDirection: "row",
+            marginBottom: 30,
+          }}
+        >
+          <Fontisto
+            name="email"
+            color="#808080"
+            size={18}
+            style={{ marginRight: 10 }}
+          />
+          <TextInput
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+        <View
+          style={{
+            height: 50,
+            borderRadius: 14,
+            paddingHorizontal: 20,
+            alignItems: "center",
+            flexDirection: "row",
+            backgroundColor: "#d3ecf0",
+            flexDirection: "row",
+            marginBottom: 30,
+          }}
+        >
+          <Ionicons
+            name="lock-open-outline"
+            size={20}
+            color="#808080"
+            style={{ marginRight: 10 }}
+          />
+          <TextInput
+            placeholder="Password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry
+          />
+        </View>
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
@@ -80,7 +143,7 @@ const Register = () => {
             Already have an account? &nbsp;
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style={{ fontFamily: "bold", color: "#007bff" }}>Login</Text>
+            <Text style={{ fontFamily: "bold", color: "#1b3427" }}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -99,9 +162,9 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+    fontFamily: "bold",
+    fontSize: 20,
+    marginBottom: 40,
     textAlign: "center",
   },
   input: {
@@ -112,10 +175,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 10,
   },
+
   button: {
-    backgroundColor: "#007bff",
+    backgroundColor: "#1b3427",
     paddingVertical: 12,
-    borderRadius: 5,
+    borderRadius: 14,
     marginTop: 20,
   },
   buttonText: {

@@ -47,7 +47,7 @@ const CheckoutPrice = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://192.168.121.227:3000/create-checkout-session",
+        "http://192.168.128.227:3000/create-checkout-session",
         {
           amount: 660,
         }
@@ -82,8 +82,14 @@ const CheckoutPrice = () => {
           zIndex: 999,
         }}
       >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ flexDirection: "row" }}
+        >
           <Ionicons name="chevron-back" size={30} color={COLORS.black} />
+          <Text style={{ fontFamily: "semibold", fontSize: 20, marginLeft: 8 }}>
+            Checkout
+          </Text>
         </TouchableOpacity>
       </View>
       <View

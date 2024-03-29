@@ -32,8 +32,16 @@ function Cart() {
         }}
       >
         <View style={styles.upperRow}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{ flexDirection: "row" }}
+          >
             <Ionicons name="chevron-back" size={30} color={COLORS.black} />
+            <Text
+              style={{ fontFamily: "semibold", fontSize: 20, marginLeft: 8 }}
+            >
+              Cart
+            </Text>
           </TouchableOpacity>
         </View>
         <Text style={{ fontFamily: "semibold", fontSize: 32 }}>
@@ -89,8 +97,14 @@ function Cart() {
         </View>
       </View>
       <View style={styles.upperRow}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ flexDirection: "row" }}
+        >
           <Ionicons name="chevron-back" size={30} color={COLORS.black} />
+          <Text style={{ fontFamily: "semibold", fontSize: 20, marginLeft: 8 }}>
+            Cart
+          </Text>
         </TouchableOpacity>
       </View>
       <ScrollView

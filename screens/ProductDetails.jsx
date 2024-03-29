@@ -16,7 +16,7 @@ const ProductDetails = ({ navigation }) => {
   const { item } = route.params;
   const [count, setCount] = useState(1);
 
-  const { cart, increaseQuantity, decreaseQuantity, addItemToCart } = useCart();
+  const { cart, addItemToCart } = useCart();
 
   const cartItem = cart.find((i) => item._id === i._id);
 

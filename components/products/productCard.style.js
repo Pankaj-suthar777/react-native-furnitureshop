@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     position: "absolute",
-    bottom: SIZES.xSmall,
-    right: SIZES.xSmall,
+    bottom: SIZES.xSmall - 5,
+    right: SIZES.xLarge + 4,
   },
 });
 

@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   Text,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthContext } from "../context/AuthContext";
+import { Ionicons, Fontisto } from "@expo/vector-icons";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -37,22 +39,66 @@ const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Login</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          secureTextEntry
-        />
+        <View style={{ height: "45%", width: "100%", marginBottom: 10 }}>
+          <Image
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+            source={{
+              uri: "https://img.freepik.com/free-vector/my-password-concept-illustration_114360-4294.jpg?t=st=1711689000~exp=1711692600~hmac=8eb1b30d9a51fe3d5327c465fde2118583cff06f0feee5a4b91e8ac861688fbc&w=740",
+            }}
+          />
+        </View>
+        <Text style={styles.title}>Unlimited Luxurious Furniture</Text>
+        <View
+          style={{
+            height: 50,
+            borderRadius: 14,
+            paddingHorizontal: 20,
+            alignItems: "center",
+            flexDirection: "row",
+            marginBottom: 30,
+            backgroundColor: "#d3ecf0",
+          }}
+        >
+          <Fontisto
+            name="email"
+            color="#808080"
+            size={18}
+            style={{ marginRight: 10 }}
+          />
+          <TextInput
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+
+        <View
+          style={{
+            height: 50,
+            borderRadius: 14,
+            paddingHorizontal: 20,
+            alignItems: "center",
+            flexDirection: "row",
+            backgroundColor: "#d3ecf0",
+            flexDirection: "row",
+            marginBottom: 30,
+          }}
+        >
+          <Ionicons
+            name="lock-open-outline"
+            size={20}
+            color="#808080"
+            style={{ marginRight: 10 }}
+          />
+          <TextInput
+            placeholder="Password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry
+          />
+        </View>
 
         <TouchableOpacity
           style={styles.button}
@@ -75,7 +121,7 @@ const Login = () => {
             Don't have an account? &nbsp;
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-            <Text style={{ fontFamily: "bold", color: "#007bff" }}>
+            <Text style={{ fontFamily: "bold", color: "#1b3427" }}>
               Register
             </Text>
           </TouchableOpacity>
@@ -97,23 +143,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "bold",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+    fontSize: 20,
+    marginBottom: 50,
     textAlign: "center",
   },
-  input: {
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
+
   button: {
-    backgroundColor: "#007bff",
+    backgroundColor: "#1b3427",
     paddingVertical: 12,
-    borderRadius: 5,
+    borderRadius: 14,
     marginTop: 20,
   },
   buttonText: {

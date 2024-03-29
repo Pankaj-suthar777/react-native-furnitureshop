@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.121.227:3000/api/users/login",
+        "http://192.168.128.227:3000/api/users/login",
         {
           password,
           email,
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.121.227:3000/api/users/register",
+        "http://192.168.128.227:3000/api/users/register",
         {
           password,
           email,
